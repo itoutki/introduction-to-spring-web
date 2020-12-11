@@ -6,7 +6,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @RestController
 public class HelloRestController {
@@ -20,7 +20,7 @@ public class HelloRestController {
     public Flux<Message> handleInterval() {
         return Flux.interval(Duration.ofSeconds(1))
                 .take(5)
-                .map(l -> new Message(new Date().toString()));
+                .map(l -> new Message(LocalDateTime.now().toString()));
     }
 
     class Message {
